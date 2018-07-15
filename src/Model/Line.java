@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import static Controller.DrawPanel.activeShape;
 import static Controller.DrawPanel.count;
-import static Controller.DrawPanel.undo;
 import static Controller.Queue.queue;
 import static View.MainWindow.shapeBox;
 
@@ -29,7 +28,6 @@ public class Line extends Polyline implements Serializable {
         ended=true;
         findBorder();
         findCenter();
-        undo.add(new Add(this.copyIt()));
         activeShape = new Line();
     }
 

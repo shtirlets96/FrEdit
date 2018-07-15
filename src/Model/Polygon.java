@@ -37,7 +37,6 @@ public class Polygon extends Polyline implements Serializable {
         ended=true;
         findBorder();
         findCenter();
-        undo.add(new Add(this.copyIt()));
         activeShape = new Polygon();
     }
 

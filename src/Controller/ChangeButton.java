@@ -1,16 +1,16 @@
 package Controller;
 
-import Model.Delete;
 import Model.Shape;
 import View.MainWindow;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import static Controller.DrawPanel.*;
 
@@ -29,11 +29,11 @@ public class ChangeButton extends JButton implements ActionListener {
     }
 
     @Override
+
     public void actionPerformed(ActionEvent e) {
         switch (type) {
             case "Delete":
                 if (!queue.isEmpty()) {
-                    DrawPanel.undo.add(new Delete(DrawPanel.activeShape.copyIt()));
                     int p = shapeBox.getSelectedIndex();
                     queue.remove(p);
                     for (int i=0; i<queue.size(); i++){
@@ -131,8 +131,6 @@ public class ChangeButton extends JButton implements ActionListener {
                         } catch (ClassNotFoundException e1) {
                             e1.printStackTrace();
                         }
-                        DrawPanel.undo = new ArrayList<>();
-                        DrawPanel.redo = new ArrayList<>();
                         DrawPanel.count = 1;
                         activeShape = new Shape();
                         shapeBox.removeAllItems();
@@ -165,6 +163,32 @@ public class ChangeButton extends JButton implements ActionListener {
 
                         MainWindow.jPanel2.repaint();
                     }
+                }
+                break;
+            case "png":
+                fileChooser = new JFileChooser();
+                fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("PNG Documents", "png"));
+                fileChooser.setAcceptAllFileFilterUsed(true);
+                int result = fileChooser.showOpenDialog(this);
+                if (result == JFileChooser.APPROVE_OPTION) {
+                    File selectedFile = fileChooser.getSelectedFile();
+                    System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+
+                    BufferedImage bImg = new BufferedImage(jPanel2.getWidth(), jPanel2.getHeight(), BufferedImage.TYPE_INT_RGB);
+                    Graphics2D cg = bImg.createGraphics();
+                    jPanel2.paintAll(cg);
+
+                    try {
+                        if (ImageIO.write(bImg, "png", selectedFile))
+                        {
+                            System.out.println("-- saved");
+                        }
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+
+
                 }
                 break;
         }

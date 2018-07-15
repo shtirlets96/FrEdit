@@ -19,8 +19,6 @@ public class DrawPanel extends JPanel implements MouseListener, MouseMotionListe
     public static int shiftX=0, shiftY=0, count=1, mode=-1, act; //shift - сдвиги; count - кол-во фигур; mode: 0-рисование, 1-трансформирование, 2-масштаб/сдвиг, 3-выбор фигуры, act - действие в трансформе 0-перемещение, 1- поворот, 2 - изменение
     public static boolean moveEnable=false, borderEnable=false;
     private int x,y,x1,y1;
-    public static ArrayList<Action> undo = new ArrayList<>();
-    public static ArrayList<Action> redo = new ArrayList<>();
 
 
     public DrawPanel() {
@@ -63,13 +61,11 @@ public class DrawPanel extends JPanel implements MouseListener, MouseMotionListe
             activeShape.currentX=e.getX();
             activeShape.currentY=e.getY();
             activeShape.press(e);
-            System.out.println("клик");
             repaint(); //update();
         }
         if (mode==1){ // трасформирование фигуры
             //Queue.Chooser(e.getX(), e.getY());
             if (activeShape.ended){
-                DrawPanel.undo.add(new Edit(DrawPanel.activeShape.copyIt()));
             activeShape.tx=(int) (e.getX()/Math.exp(scale)+shiftX);
             activeShape.ty=(int) (e.getY()/Math.exp(scale)+shiftY);
             activeShape.rtx=(int) (e.getX()/Math.exp(scale)+shiftX);
@@ -180,7 +176,6 @@ public class DrawPanel extends JPanel implements MouseListener, MouseMotionListe
             activeShape.currentX=e.getX();
             activeShape.currentY=e.getY();
             repaint(); //update();
-            System.out.println("муваем");
         }
 
     }

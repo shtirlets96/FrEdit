@@ -108,7 +108,6 @@ public class Bezier extends Polyline implements Serializable {
         ended=true;
         findBorder();
         findCenter();
-        undo.add(new Add(this.copyIt()));
         activeShape = new Bezier();
     }
 

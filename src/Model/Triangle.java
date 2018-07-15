@@ -44,7 +44,6 @@ public class Triangle extends Polygon implements Serializable {
         findBorder();
         findCenter();
         ind=count;
-        undo.add(new Add(this.copyIt()));
         activeShape = new Triangle();
     }
 

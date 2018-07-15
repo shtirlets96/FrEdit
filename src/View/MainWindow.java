@@ -7,10 +7,7 @@ import Controller.ShapeButton;
 
 import java.awt.Color;
 
-/**
- *
- * @author Frol
- */
+
 public class MainWindow extends javax.swing.JFrame {
 
     /**
@@ -59,8 +56,10 @@ public class MainWindow extends javax.swing.JFrame {
         jButton23 = new ChangeButton("Fill", this);
         jButton14 = new ChangeButton("FillColor", this);
         jButton24 = new ChangeButton("Delete", this);
-        jButton21 = new ChangeButton("Up", this);
-        jButton22 = new ChangeButton("Down", this);
+        jButton21 = new ChangeButton("Down", this);
+        jButton22 = new ChangeButton("Up", this);
+        jButton26 = new ChangeButton("png", this);
+
         shapeBox = new ShapeBox();
         jPanel2 =  new DrawPanel();
         jButton17 = new ChangeButton("Panel", this);
@@ -151,12 +150,20 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel1.setLabelFor(textZoom);
         jLabel1.setText("Масштаб");
 
+        jButton26.setBackground(new java.awt.Color(102, 0, 51));
+        jButton26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/png.png"))); // NOI18N
+        jButton26.setContentAreaFilled(false);
+        jButton26.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton26.setOpaque(true);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                    .addGap(9, 9, 9)
+                    .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -187,9 +194,11 @@ public class MainWindow extends javax.swing.JFrame {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jButton17)
                     .addContainerGap())
+
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jButton26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -209,6 +218,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jButton17))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+
         );
 
         jPanel3.setBackground(new java.awt.Color(46, 45, 46));
@@ -517,6 +527,7 @@ public class MainWindow extends javax.swing.JFrame {
     public static javax.swing.JPanel jPanel2;
     public static javax.swing.JSlider jSlider2;
     public static javax.swing.JTextField textZoom;
+    private javax.swing.JButton jButton26;
 
 
     public static javax.swing.JTextField textMaxX;

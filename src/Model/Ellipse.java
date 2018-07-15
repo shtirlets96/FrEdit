@@ -33,7 +33,6 @@ public class Ellipse extends Shape implements Serializable {
         ended=true;
         findBorder();
         findCenter();
-        undo.add(new Add(this.copyIt()));
         activeShape = new Ellipse();
     }
 

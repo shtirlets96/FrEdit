@@ -47,7 +47,6 @@ public class Rectangle extends Polygon implements Serializable {
         ended=true;
         findBorder();
         findCenter();
-        undo.add(new Add(this.copyIt()));
         activeShape = new Rectangle();
     }
 
